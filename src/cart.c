@@ -17,7 +17,7 @@ int cart_load()
     //f=fopen("/home/cassiano/colors.nes","rb");
     //f=fopen("/home/cassiano/nestest.nes","rb");
     //f=fopen("/home/cassiano/Projects/zNES/roms/mario.nes","rb");
-    f=fopen("/home/cassiano/Downloads/01-implied.nes","rb");
+    f=fopen("testroms/01-implied.nes","rb");
 
     fread(&header,sizeof(header),1,f);
 
