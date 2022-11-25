@@ -1,17 +1,16 @@
-#include <stdio.h>
+#include "inc/mem.h"
+#include "inc/apu.h"
+#include "inc/cart.h"
+#include "inc/ppu.h"
 #include <memory.h>
-#include "mem.h"
-#include "cart.h"
-#include "ppu.h"
-#include "apu.h"
+#include <stdio.h>
 
 Mem mem;
 
-static uint8_t IO[0xa];
+uint8_t IO[0xa];
 uint16_t openbus = 0xff;
 
-void mem_init(void)
-{
+void mem_init(void) {
     int i;
 
     // flush RAM contents
@@ -20,11 +19,10 @@ void mem_init(void)
     // initialize lookup table
     for (i = 0; i < 0xffff; i++)
         mem.lookup[i] = &openbus;
-        //mem.lookup[i] = NULL;
+    // mem.lookup[i] = NULL;
 
     // map ram
-    for (i = 0; i < RAM_SIZE; i++)
-    {
+    for (i = 0; i < RAM_SIZE; i++) {
         mem.lookup[RAM_ADDR + i] = &mem.ram[i];
         mem.lookup[RAM_MIRROR1 + i] = &mem.ram[i];
         mem.lookup[RAM_MIRROR2 + i] = &mem.ram[i];
@@ -46,7 +44,7 @@ void mem_init(void)
     mem.lookup[PPU_DATA] = &ppu.data;
 
     // TODO: map APU registers (not implemented yet)
-    for(i=0; i<0x18; i++)
+    for (i = 0; i < 0x18; i++)
         mem.lookup[SND_REGISTER + i] = &apu.apubus[i];
 
     // map joypad registers

@@ -1,7 +1,7 @@
-#include "mem.h"
-#include "cart.h"
-#include "cpu.h"
-#include "ppu.h"
+#include "inc/mem.h"
+#include "inc/cart.h"
+#include "inc/cpu.h"
+#include "inc/ppu.h"
 
 main()
 {
@@ -16,7 +16,7 @@ main()
     //     if(i==0)
     //         printf("0x%04X: ", ROM_ADDR + i);
 
-    //     printf("%02x ", mem_read(ROM_ADDR + i));
+    //     printf("%02x ", mem_read8(ROM_ADDR + i));
     //     if((i+1)%32==0 && i>0)
     //         printf("\n0x%04X: ", ROM_ADDR + i);
     // }

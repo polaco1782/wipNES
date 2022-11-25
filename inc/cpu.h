@@ -1,34 +1,32 @@
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 #ifndef __CPU_H__
 #define __CPU_H__
 
-#define SET_NZ(x) cpu.Z = ((x) == 0); \
-                  cpu.N = ((x) >> 7)&1;
+#define SET_NZ(x)                                                              \
+    cpu.Z = ((x) == 0);                                                        \
+    cpu.N = ((x) >> 7) & 1;
 
 typedef void (*optable_t)(void);
 
-typedef struct
-{
+typedef struct {
     // general purpose registers
     uint8_t A;
     uint8_t X;
     uint8_t Y;
 
-    union
-    {
+    union {
         // bit access to CPU state register
-        struct
-        {
-            uint8_t C:1;    // carry
-            uint8_t Z:1;    // zero
-            uint8_t I:1;    // interrupt disable
-            uint8_t D:1;    // decimal mode
-            uint8_t B:1;    // break
-            uint8_t R:1;    // reserved
-            uint8_t V:1;    // overflow
-            uint8_t N:1;    // negative
+        struct {
+            uint8_t C : 1; // carry
+            uint8_t Z : 1; // zero
+            uint8_t I : 1; // interrupt disable
+            uint8_t D : 1; // decimal mode
+            uint8_t B : 1; // break
+            uint8_t R : 1; // reserved
+            uint8_t V : 1; // overflow
+            uint8_t N : 1; // negative
         };
         uint8_t P;
     };
@@ -69,7 +67,7 @@ void sei(void);
 void clc(void);
 void cli(void);
 void ora(void);
-void and(void);
+void and (void);
 void eor(void);
 void adc(void);
 void sta(void);

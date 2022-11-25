@@ -1,8 +1,8 @@
 cc_library(
     name = "wipneslib",
     srcs = glob(["src/*.c"]),
-    hdrs = glob(["include/*.h"]),
-    strip_include_prefix = "include",
+    hdrs = glob(["inc/*.h"]),
+    #strip_include_prefix = "include",
 )
 
 cc_binary(
